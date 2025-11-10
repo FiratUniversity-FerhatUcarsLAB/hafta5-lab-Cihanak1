@@ -3,8 +3,7 @@
  * Tarih: 11.11.2025
  * Aciklama: Gorev 1 - Geometrik Sekil Hesaplayici
  * 
- * Bu program temel geometrik sekillerin alan ve
- * cevre hesaplamalarini yapar.
+ * Bu program temel fizik formüllerini gerekli sembol ve değerleri ile çıktı verir.
 
 
 package odev_3;
