@@ -1,145 +1,136 @@
-/*
- * Ad Soyad: [ADINIZI BURAYA YAZIN]
- * Ogrenci No: [OGRENCI NUMARANIZI BURAYA YAZIN]
- * Tarih: [TARIHI BURAYA YAZIN]
+
+ * Ad Soyad: Cihan Akalın
+ * Ogrenci No: 250541107
+ * Tarih: 11.11.2025
  * Aciklama: Gorev 1 - Geometrik Sekil Hesaplayici
  * 
  * Bu program temel geometrik sekillerin alan ve
  * cevre hesaplamalarini yapar.
- */
+
+
+
+
+
+package odev_3;
 
 import java.util.Scanner;
 
-public class GeometriHesap {
-    
-    // METOT 1: Kare alani
+
+public class geo {
+
+    // HESAPLAMA METOTLARI
+
+    // KARE METOTLARI
     public static double calculateSquareArea(double side) {
-        // Alan = kenar * kenar
-        
-        return 0.0; // Degistirin
+        return side * side;
     }
-    
-    // METOT 2: Kare cevresi
+
     public static double calculateSquarePerimeter(double side) {
-        // Cevre = 4 * kenar
-        
-        return 0.0; // Degistirin
+        return 4 * side;
     }
-    
-    // METOT 3: Dikdortgen alani
+
+    // DİKDÖRTGEN METOTLARI
     public static double calculateRectangleArea(double width, double height) {
-        // Alan = genislik * yukseklik
-        
-        return 0.0; // Degistirin
+        return width * height;
     }
-    
-    // METOT 4: Dikdortgen cevresi
+
     public static double calculateRectanglePerimeter(double width, double height) {
-        // Cevre = 2 * (genislik + yukseklik)
-        
-        return 0.0; // Degistirin
+        return 2 * (width + height);
     }
-    
-    // METOT 5: Daire alani
+
+    // DAİRE METOTLARI
     public static double calculateCircleArea(double radius) {
-        // Alan = PI * r * r
-        // Math.PI kullanabilirsiniz
-        
-        return 0.0; // Degistirin
+        // Math.PI ve Math.pow() kullanıldı.
+        return Math.PI * Math.pow(radius, 2);
     }
-    
-    // METOT 6: Daire cevresi
+
     public static double calculateCircleCircumference(double radius) {
-        // Cevre = 2 * PI * r
-        
-        return 0.0; // Degistirin
+        return 2 * Math.PI * radius;
     }
-    
-    // METOT 7: Ucgen alani (taban ve yukseklik ile)
+
+    // ÜÇGEN METOTLARI
     public static double calculateTriangleArea(double base, double height) {
-        // Alan = (taban * yukseklik) / 2
-        
-        return 0.0; // Degistirin
+        return (base * height) / 2;
     }
-    
-    // METOT 8: Ucgen cevresi
+
     public static double calculateTrianglePerimeter(double a, double b, double c) {
-        // Cevre = a + b + c
-        
-        return 0.0; // Degistirin
+        return a + b + c;
     }
-    
+
+
+    // GİRDİ/ÇIKTI YÖNETİM METOTLARI
+
+    public static void processSquare(Scanner scanner) {
+        System.out.print("\n--- KARE ---\nKenar uzunluğunu (cm) girin: ");
+        double kareKenar = scanner.nextDouble();
+
+        double kareAlan = calculateSquareArea(kareKenar); 
+        double kareCevre = calculateSquarePerimeter(kareKenar);
+
+        System.out.printf("-> SONUÇ (K: %.2f) -> ALAN: %.2f cm², ÇEVRE: %.2f cm\n", 
+                          kareKenar, kareAlan, kareCevre);
+    }
+
+    public static void processRectangle(Scanner scanner) {
+        System.out.print("\n--- DİKDÖRTGEN ---\nGenişlik (cm) girin: ");
+        double dikdortgenG = scanner.nextDouble();
+        System.out.print("Yükseklik (cm) girin: ");
+        double dikdortgenY = scanner.nextDouble();
+
+        double dikdortgenAlan = calculateRectangleArea(dikdortgenG, dikdortgenY);
+        double dikdortgenCevre = calculateRectanglePerimeter(dikdortgenG, dikdortgenY);
+
+        System.out.printf("-> SONUÇ (G: %.2f, Y: %.2f) -> ALAN: %.2f cm², ÇEVRE: %.2f cm\n", 
+                          dikdortgenG, dikdortgenY, dikdortgenAlan, dikdortgenCevre);
+    }
+
+    public static void processCircle(Scanner scanner) {
+        System.out.print("\n--- DAİRE ---\nYarıçapı (cm) girin: ");
+        double daireYaricap = scanner.nextDouble();
+
+        double daireAlan = calculateCircleArea(daireYaricap);
+        double daireCevre = calculateCircleCircumference(daireYaricap);
+
+        System.out.printf("-> SONUÇ (r: %.2f) -> ALAN: %.2f cm², ÇEVRE: %.2f cm\n", 
+                          daireYaricap, daireAlan, daireCevre);
+    }
+
+    public static void processTriangle(Scanner scanner) {
+        // Alan ve Çevre için girdiler
+        System.out.print("\n--- ÜÇGEN ---\nTaban uzunluğunu (cm) girin: ");
+        double ucgenTaban = scanner.nextDouble();
+        System.out.print("Yüksekliği (cm) girin: ");
+        double ucgenYukseklik = scanner.nextDouble();
+        
+        System.out.print("1. Kenar (a) uzunluğunu girin: ");
+        double kenarA = scanner.nextDouble();
+        System.out.print("2. Kenar (b) uzunluğunu girin: ");
+        double kenarB = scanner.nextDouble();
+        System.out.print("3. Kenar (c) uzunluğunu girin: ");
+        double kenarC = scanner.nextDouble();
+
+        double ucgenAlan = calculateTriangleArea(ucgenTaban, ucgenYukseklik);
+        double ucgenCevre = calculateTrianglePerimeter(kenarA, kenarB, kenarC);
+
+        System.out.printf("-> ALAN SONUCU (T: %.2f, Y: %.2f): %.2f cm²\n", 
+                          ucgenTaban, ucgenYukseklik, ucgenAlan);
+        System.out.printf("-> ÇEVRE SONUCU (a+b+c: %.2f+%.2f+%.2f): %.2f cm\n", 
+                          kenarA, kenarB, kenarC, ucgenCevre);
+    }
+
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("--- GÖREV 1: GEOMETRİK ŞEKİL HESAPLAYICISI BAŞLADI ---\n");
+
+        // Tüm şekillerin girdi/çıktı metotları sırayla çağrılıyor
+        processSquare(scanner);
+        processRectangle(scanner);
+        processCircle(scanner);
+        processTriangle(scanner);
+
+        System.out.println("\n İşlem Tamamlandı \n");
         
-        System.out.println("=== GEOMETRIK SEKIL HESAPLAYICI ===");
-        System.out.println();
-        
-        // KARE bilgileri
-        System.out.println("KARE:");
-        System.out.print("Kenar uzunlugu (cm): ");
-        double squareSide = input.nextDouble();
-        
-        // DIKDORTGEN bilgileri
-        System.out.println("\nDIKDORTGEN:");
-        System.out.print("Kisa kenar (cm): ");
-        double rectWidth = input.nextDouble();
-        System.out.print("Uzun kenar (cm): ");
-        double rectHeight = input.nextDouble();
-        
-        // DAIRE bilgileri
-        System.out.println("\nDAIRE:");
-        System.out.print("Yaricap (cm): ");
-        double radius = input.nextDouble();
-        
-        // UCGEN bilgileri
-        System.out.println("\nUCGEN:");
-        System.out.print("Taban (cm): ");
-        double base = input.nextDouble();
-        System.out.print("Yukseklik (cm): ");
-        double height = input.nextDouble();
-        System.out.print("1. kenar (cm): ");
-        double side1 = input.nextDouble();
-        System.out.print("2. kenar (cm): ");
-        double side2 = input.nextDouble();
-        System.out.print("3. kenar (cm): ");
-        double side3 = input.nextDouble();
-        
-        // HESAPLAMALARI YAP - Metotlari cagir
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        // SONUCLARI YAZDIR
-        System.out.println("\n========================================");
-        System.out.println("         HESAPLAMA SONUCLARI");
-        System.out.println("========================================");
-        
-        System.out.printf("\nKARE (kenar: %.1f cm):\n", squareSide);
-        // Alan ve cevre yazdir
-        
-        
-        System.out.printf("\nDIKDORTGEN (%.1f x %.1f cm):\n", rectWidth, rectHeight);
-        // Alan ve cevre yazdir
-        
-        
-        System.out.printf("\nDAIRE (yaricap: %.1f cm):\n", radius);
-        // Alan ve cevre yazdir
-        
-        
-        System.out.printf("\nUCGEN (taban: %.1f, yukseklik: %.1f cm):\n", base, height);
-        // Alan ve cevre yazdir
-        
-        
-        System.out.println("========================================");
-        
-        input.close();
+        scanner.close();
     }
 }
